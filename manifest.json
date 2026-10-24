@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "otlet.worms-cursor",
+  "name": "Worms cursor",
+  "version": "1.0.0",
+  "author": "otlet",
+  "license": "MIT",
+  "description": "Arrow cursor that rotates to follow mouse movement and keeps the last angle when the pointer stops.",
+  "kinds": ["panel"],
+  "keepLoaded": true,
+  "entryPoints": {
+    "panel": "WormCursor.qml"
+  }
+}

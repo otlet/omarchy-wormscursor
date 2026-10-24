@@ -1,0 +1,4 @@
+[Icon Theme]
+Name=worms-cursor
+Comment=Invisible arrow; otlet.worms-cursor draws the pointer
+Inherits=Adwaita
