@@ -112,13 +112,25 @@ def check():
     print("ok")
 
 
+MAX_RESPONSE = 4096
+SOCKET_TIMEOUT = 2.0
+
+
+def valid_instance(inst):
+    return bool(inst) and "/" not in inst and "\\" not in inst and "\x00" not in inst
+
+
 def main():
     inst = os.environ.get("HYPRLAND_INSTANCE_SIGNATURE", "")
+    if not valid_instance(inst):
+        while True:
+            time.sleep(0.5)
     path = f"/run/user/{os.getuid()}/hypr/{inst}/.socket.sock"
     aim = Aim()
     while True:
         try:
             sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            sock.settimeout(SOCKET_TIMEOUT)
             sock.connect(path)
             sock.sendall(b"j/cursorpos")
             data = b""
@@ -127,6 +139,8 @@ def main():
                 if not chunk:
                     break
                 data += chunk
+                if len(data) > MAX_RESPONSE:
+                    raise ValueError("response too large")
             sock.close()
             text = data.decode()
             x = int(text.split('"x":', 1)[1].split(",", 1)[0])

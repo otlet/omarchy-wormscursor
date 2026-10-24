@@ -29,7 +29,7 @@ Item {
   Process {
     id: watch
     running: true
-    command: ["python3", "-u", Quickshell.env("HOME") + "/.config/omarchy/plugins/otlet.worms-cursor/watch.py"]
+    command: ["/usr/bin/python3", "-u", Quickshell.env("HOME") + "/.config/omarchy/plugins/otlet.worms-cursor/watch.py"]
     stdout: SplitParser {
       onRead: function(line) { root.note(line) }
     }
