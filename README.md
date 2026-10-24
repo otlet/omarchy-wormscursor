@@ -31,6 +31,22 @@ hyprctl setcursor worms-cursor 24
 
 Hyprland reloads `looknfeel.lua` on save. New windows pick up the theme after `hyprctl setcursor`.
 
+## Development
+
+```sh
+uv sync --extra dev
+uv run pytest -q
+uv run ruff check .
+```
+
+Conventional commits are enforced by commitizen (commit-msg hook). Convenient commit:
+
+```sh
+./scripts/commit.sh -m "feat: ..."
+# or
+make commit
+```
+
 ## Remove
 
 ```sh

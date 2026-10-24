@@ -120,6 +120,12 @@ def valid_instance(inst):
     return bool(inst) and "/" not in inst and "\\" not in inst and "\x00" not in inst
 
 
+def parse_cursorpos(text):
+    x = int(text.split('"x":', 1)[1].split(",", 1)[0])
+    y = int(text.split('"y":', 1)[1].split("}", 1)[0])
+    return x, y
+
+
 def main():
     inst = os.environ.get("HYPRLAND_INSTANCE_SIGNATURE", "")
     if not valid_instance(inst):
@@ -143,8 +149,7 @@ def main():
                     raise ValueError("response too large")
             sock.close()
             text = data.decode()
-            x = int(text.split('"x":', 1)[1].split(",", 1)[0])
-            y = int(text.split('"y":', 1)[1].split("}", 1)[0])
+            x, y = parse_cursorpos(text)
             deg = aim.update(x, y, time.monotonic())
             print(f"{x} {y} {deg:.2f}", flush=True)
         except Exception:
