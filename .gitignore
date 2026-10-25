@@ -3,3 +3,4 @@ __pycache__/
 .ruff_cache/
 .venv/
 *.egg-info/
+cursors/worms-cursor/cursors/*

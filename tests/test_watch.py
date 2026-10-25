@@ -1,5 +1,6 @@
 import math
 
+import blank_cursor
 import watch
 
 
@@ -65,6 +66,13 @@ def test_aim_idle_freeze():
 
 def test_check_runs():
     watch.check()
+
+
+def test_blank_cursor_is_transparent_xcursor():
+    assert blank_cursor.BLOB[:4] == b"Xcur"
+    assert len(blank_cursor.BLOB) == 68
+    assert "text" in blank_cursor.NAMES
+    assert "pointer" in blank_cursor.NAMES
 
 
 def test_wrap():

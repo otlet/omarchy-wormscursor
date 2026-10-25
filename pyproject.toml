@@ -1,6 +1,6 @@
 [project]
 name = "otlet-worms-cursor"
-version = "1.0.1"
+version = "1.0.2"
 description = "Arrow cursor that rotates to follow mouse movement."
 requires-python = ">=3.11"
 dependencies = []
@@ -21,6 +21,6 @@ select = ["E", "F", "I", "B", "UP"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "1.0.1"
+version = "1.0.2"
 version_files = ["manifest.json:version"]
 tag_format = "v$version"
